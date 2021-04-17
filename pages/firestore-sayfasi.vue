@@ -5,8 +5,21 @@ export default {
       mesaj: "",
     };
   },
+
   methods: {
-    async firestoreYaz() {
+    async firestoreOku() {
+      const messageRef = this.$fire.firestore
+        .collection("gelen-mesajlar")
+        .doc("dokuman-adi");
+      try {
+        const messageDoc = await messageRef.get();
+        alert(messageDoc.data().mesaj);
+      } catch (e) {
+        alert(e);
+        return;
+      }
+    },
+    async firestoreYazdir() {
       const messageRef = this.$fire.firestore
         .collection("gelen-mesajlar")
         .doc("dokuman-adi");
@@ -26,10 +39,11 @@ export default {
 
 <template>
   <div class="container">
-    <form>
+    <form @submit.prevent="firestoreYazdir">
       <textarea v-model="mesaj"></textarea>
+      <button type="submit">Gonder</button>
     </form>
-    <button v-on:click="firestoreYaz">Gonder</button>
+    <button v-on:click="firestoreOku">Firestore Okuma</button>
   </div>
 </template>
 

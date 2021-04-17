@@ -1,28 +1,12 @@
 <script>
-export default {
-  methods: {
-    async writeToFirestore() {
-      const messageRef = this.$fire.firestore
-        .collection("gelen-mesajlar")
-        .doc("dokuman-adi");
-      try {
-        await messageRef.set({
-          mesaj: "Selam Dunya",
-        });
-      } catch (e) {
-        alert(e);
-        return;
-      }
-      alert("Success.");
-    },
-  },
-};
+export default {};
 </script>
 
 <template>
   <div class="container">
     <a href="/kayit-ol">Kayit Ol</a>
     <a href="/giris-yap">Giris Yap</a>
+    <a href="/firestore-sayfasi">Firestore Sayfasi</a>
   </div>
 </template>
 

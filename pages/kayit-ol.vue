@@ -38,7 +38,7 @@ export default {
           required
         />
 
-        <label for="password"><b>Sifre</b></label>
+        <label for="password"><b>Parola</b></label>
         <input
           type="password"
           placeholder="************"
